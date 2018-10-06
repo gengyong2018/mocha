@@ -16,6 +16,8 @@ $ sudo npm install chai-http
 ## How to run ?
 ```
 $ mocha -t 5000 chai_post.js # 5 second timeout
+$ mocha -t 5000 -g SWIFT chai_post.js # run SWIFT related cases only
+
 ```
 
 ## Example output
