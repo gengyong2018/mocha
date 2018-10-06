@@ -11,7 +11,9 @@ $ sudo npm install chai-http
 ```
 
 ## How to run ?
-$ mocha -t 5000 chai_post.js
+```
+$ mocha -t 5000 chai_post.js # 5 second timeout
+```
 
 ## Example output
 ```shell
