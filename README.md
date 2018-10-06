@@ -1,5 +1,8 @@
 # mocha
 Testing script using mocha
+* **chai_post.js**: the test script
+* **defect_report.md**: defect reporting
+* **test_report.md**: sample output by running the test
 
 ## How to setup ?
 ```shell
