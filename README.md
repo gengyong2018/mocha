@@ -2,7 +2,7 @@
 Testing script using mocha
 
 ## How to run ?
-$ mocha chai_post.js
+$ mocha -t 5000 chai_post.js
 
 ## Example output
 ```shell
