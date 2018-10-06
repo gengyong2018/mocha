@@ -1,6 +1,15 @@
 # mocha
 Testing script using mocha
 
+## How to setup ?
+```shell
+$ sudo apt-get install nodejs
+$ sudo apt-get install npm
+$ sudo npm install -g mocha
+$ sudo npm install chai
+$ sudo npm install chai-http
+```
+
 ## How to run ?
 $ mocha -t 5000 chai_post.js
 
