@@ -13,10 +13,10 @@ describe('Site is up', function() {
       .end(function(err, res) {
         if (err) {
           throw err;
-	}
+        }
 
-	res.should.have.status(404);
-	done();
+        res.should.have.status(404);
+        done();
       });
   });
 });
@@ -29,7 +29,7 @@ describe('POSITIVE cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
@@ -48,7 +48,7 @@ describe('POSITIVE cases', function() {
         "payment_method": "LOCAL",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         //"swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
@@ -69,7 +69,7 @@ describe('PAYMENT METHOD negative cases', function() {
         //"payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
@@ -88,7 +88,7 @@ describe('PAYMENT METHOD negative cases', function() {
         "payment_method": "SWIF",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
@@ -109,7 +109,7 @@ describe('BANK COUNTRY CODE negative cases', function() {
         "payment_method": "SWIFT",
         //"bank_country_code": "AU",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
@@ -128,7 +128,7 @@ describe('BANK COUNTRY CODE negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "AX",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
@@ -149,14 +149,14 @@ describe('ACCOUNT NAME negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         //"account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("'account_name' is required");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("'account_name' is required");
         //console.log(res.body);
         done();
       });
@@ -169,14 +169,14 @@ describe('ACCOUNT NAME negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith_", // 11 characters
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("Length of account_name should be between 2 and 10");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("Length of account_name should be between 2 and 10");
         //console.log(res.body);
         done();
       });
@@ -189,14 +189,14 @@ describe('ACCOUNT NAME negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "J", // 1 characters
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("Length of account_name should be between 2 and 10");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("Length of account_name should be between 2 and 10");
         //console.log(res.body);
         done();
       });
@@ -211,14 +211,14 @@ describe('ACCOUNT NUMBER negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	//"account_number": "123",
+        //"account_number": "123",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("'account_number' is required");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("'account_number' is required");
         //console.log(res.body);
         done();
       });
@@ -231,16 +231,16 @@ describe('ACCOUNT NUMBER negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123456789012345678", // 18 characters
+        "account_number": "123456789012345678", // 18 characters
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("Length of account_number should be between 1 and 17 when bank_country_code is 'US'");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("Length of account_number should be between 1 and 17 when bank_country_code is 'US'");
         //console.log(res.body);
-	done();
+        done();
       });
   })
 
@@ -251,16 +251,16 @@ describe('ACCOUNT NUMBER negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "AU",
         "account_name": "John Smith",
-	"account_number": "12345", // 5 characters
+        "account_number": "12345", // 5 characters
         "swift_code": "ICBCAUBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("Length of account_number should be between 6 and 9 when bank_country_code is 'AU'");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("Length of account_number should be between 6 and 9 when bank_country_code is 'AU'");
         //console.log(res.body);
-	done();
+        done();
       });
   });;
 
@@ -271,17 +271,17 @@ describe('ACCOUNT NUMBER negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "AU",
         "account_name": "John Smith",
-	"account_number": "1234567890", // 10 characters
+        "account_number": "1234567890", // 10 characters
         "swift_code": "ICBCAUBJ",
         "aba": "11122233A",
-	"bsb": "123456"
+        "bsb": "123456"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("Length of account_number should be between 6 and 9 when bank_country_code is 'AU'");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("Length of account_number should be between 6 and 9 when bank_country_code is 'AU'");
         //console.log(res.body);
-	done();
+        done();
       });
   })
 
@@ -292,16 +292,16 @@ describe('ACCOUNT NUMBER negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "CN",
         "account_name": "John Smith",
-	"account_number": "1234567", // 7 char
+        "account_number": "1234567", // 7 char
         "swift_code": "ICBCCNBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("Length of account_number should be between 8 and 20 when bank_country_code is 'CN'");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("Length of account_number should be between 8 and 20 when bank_country_code is 'CN'");
         //console.log(res.body);
-	done();
+        done();
       });
   });;
 
@@ -312,16 +312,16 @@ describe('ACCOUNT NUMBER negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "CN",
         "account_name": "John Smith",
-	"account_number": "123456789012345678901", // 21 char
+        "account_number": "123456789012345678901", // 21 char
         "swift_code": "ICBCCNBJ",
         "aba": "11122233A"
       })
       .end(function(err, res) {
         res.should.have.status(400);
-	expect(res).to.be.json;
-	expect(res.body.error).to.equal("Length of account_number should be between 8 and 20 when bank_country_code is 'CN'");
+        expect(res).to.be.json;
+        expect(res.body.error).to.equal("Length of account_number should be between 8 and 20 when bank_country_code is 'CN'");
         //console.log(res.body);
-	done();
+        done();
       });
   });
 
@@ -335,7 +335,7 @@ describe('SWIFT CODE negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         //"swift_code": "ICBCUSBJ",
         "aba": "11122233A"
       })
@@ -354,7 +354,7 @@ describe('SWIFT CODE negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCAUBJ",
         "aba": "11122233A"
       })
@@ -373,7 +373,7 @@ describe('SWIFT CODE negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJJJ", // length=10
         "aba": "11122233A"
       })
@@ -392,7 +392,7 @@ describe('SWIFT CODE negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123",
+        "account_number": "123",
         "swift_code": "ICBCUSBJJJJJ", // length=12
         "aba": "11122233A"
       })
@@ -413,10 +413,10 @@ describe('BSB negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "AU",
         "account_name": "John Smith",
-	"account_number": "123456",
+        "account_number": "123456",
         "swift_code": "ICBCAUBJ",
         "aba": "11122233A",
-	//"bsb": "123456"
+        //"bsb": "123456"
       })
       .end(function(err, res) {
         res.should.have.status(400);
@@ -433,10 +433,10 @@ describe('BSB negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "AU",
         "account_name": "John Smith",
-	"account_number": "123456",
+        "account_number": "123456",
         "swift_code": "ICBCAUBJ",
         "aba": "11122233A",
-	"bsb": "12345"
+        "bsb": "12345"
       })
       .end(function(err, res) {
         res.should.have.status(400);
@@ -453,10 +453,10 @@ describe('BSB negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "AU",
         "account_name": "John Smith",
-	"account_number": "123456",
+        "account_number": "123456",
         "swift_code": "ICBCAUBJ",
         "aba": "11122233A",
-	"bsb": "1234567"
+        "bsb": "1234567"
       })
       .end(function(err, res) {
         res.should.have.status(400);
@@ -475,10 +475,10 @@ describe('ABA negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123456",
+        "account_number": "123456",
         "swift_code": "ICBCUSBJ",
         //"aba": "11122233A",
-	//"bsb": "123456"
+        //"bsb": "123456"
       })
       .end(function(err, res) {
         res.should.have.status(400);
@@ -495,10 +495,10 @@ describe('ABA negative cases', function() {
         "payment_method": "SWIFT",
         "bank_country_code": "US",
         "account_name": "John Smith",
-	"account_number": "123456",
+        "account_number": "123456",
         "swift_code": "ICBCUSBJ",
         "aba": "11122233A_", // 10 char
-	"bsb": "12345"
+        "bsb": "12345"
       })
       .end(function(err, res) {
         res.should.have.status(400);
